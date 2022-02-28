@@ -7,20 +7,36 @@ public class Complejidad {
     private MatrizDeTiempos matrizTiempos;
     private VectorOrdenable vector;
     private VectorOrdenableVolatile vectorVolatile;
-    private final String[] titulos = { "CasoPeorBurbujaNormal", "CasoMedioBurbujaNormal", "CasoMejorBurbujaNormal",
-            "CasoPeorSeleccionDirectaNormal", "CasoMedioSeleccionDirectaNormal", "CasoMejorSeleccionDirectaNormal",
-            "CasoPeorMezclaNormal", "CasoMedioMezclaNormal", "CasoMejorMezclaNormal",
-            "CasoPeorBurbujaVolatile", "CasoMedioBurbujaVolatile", "CasoMejorBurbujaVolatile",
-            "CasoPeorSeleccionDirectaVolatile", "CasoMedioSeleccionDirectaVolatile",
-            "CasoMejorSeleccionDirectaVolatile",
-            "CasoPeorMezclaVolatile", "CasoMedioMezclaVolatile", "CasoMejorMezclaVolatile"
+    private final String[] titulos = {
+        "CasoPeorBurbujaNormal",
+        "CasoMedioBurbujaNormal",
+        "CasoMejorBurbujaNormal",
+        "CasoPeorSeleccionDirectaNormal",
+        "CasoMedioSeleccionDirectaNormal",
+        "CasoMejorSeleccionDirectaNormal",
+        "CasoPeorMezclaNormal",
+        "CasoMedioMezclaNormal",
+        "CasoMejorMezclaNormal",
+        "CasoPeorBurbujaVolatile",
+        "CasoMedioBurbujaVolatile",
+        "CasoMejorBurbujaVolatile",
+        "CasoPeorSeleccionDirectaVolatile",
+        "CasoMedioSeleccionDirectaVolatile",
+        "CasoMejorSeleccionDirectaVolatile",
+        "CasoPeorMezclaVolatile",
+        "CasoMedioMezclaVolatile",
+        "CasoMejorMezclaVolatile"
     };
     // End Atributos.
 
     // Constructor:
     public Complejidad(int numeroDeIteraciones) {
         this.numeroDeIteraciones = numeroDeIteraciones;
-        this.matrizTiempos = new MatrizDeTiempos(numeroDeIteraciones, 18, titulos);
+        this.matrizTiempos = new MatrizDeTiempos(
+            numeroDeIteraciones,
+            this.titulos.length,
+            titulos
+        );
         this.vector = new VectorOrdenable();
         this.vectorVolatile = new VectorOrdenableVolatile();
     }

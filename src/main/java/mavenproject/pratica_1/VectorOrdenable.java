@@ -115,7 +115,7 @@ public class VectorOrdenable {
     private String vectorAString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Vector No Volátil | NumeroDeElementos: ");
-        sb.append(this.numeroDeElementos + "\n Elementos: [");
+        sb.append(this.numeroDeElementos + "\nElementos: [");
         for (int i = 0; i < this.numeroDeElementos; i++) {
             sb.append(vector[i]);
             if (i != this.numeroDeElementos - 1)
@@ -126,7 +126,6 @@ public class VectorOrdenable {
     }
 
     private static void burbuja(int[] v) {
-        int n = v.length;
         for (int i = 0; i < v.length - 1; i++) {
             for (int j = v.length - 1; j > i; j--) {
                 if (v[j - 1] > v[j]) {
