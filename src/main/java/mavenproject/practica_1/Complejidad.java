@@ -1,4 +1,4 @@
-package mavenproject.pratica_1;
+package mavenproject.practica_1;
 
 public class Complejidad {
 

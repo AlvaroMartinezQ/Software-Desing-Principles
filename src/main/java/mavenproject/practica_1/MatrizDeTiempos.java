@@ -1,4 +1,4 @@
-package mavenproject.pratica_1;
+package mavenproject.practica_1;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
