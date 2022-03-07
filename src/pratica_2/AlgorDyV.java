@@ -22,36 +22,36 @@ public class AlgorDyV {
 	}
 
 	private int algorDyV(int[] v) {
-		int centro = v.length / 2;
-		int contador_izquierda;
-		int contador_derecha;
-		int contador_union;
+		int inversiones_izquierda, inversiones_derecha, inversiones_union;
 
 		// Lista de menor longitud a 1 no devuelve inversion
+		// Ya que no tiene con que dividir y comparar
 		if (v.length <= 1) {
 			return 0;
 		}
-		int[] izquierda = new int[centro];
-		int[] derecha = new int[v.length - centro];
+		// Preparamos los arrays
+		int mid = v.length / 2;
+		int[] izquierda = new int[mid];
+		int[] derecha = new int[v.length - mid];
 		// Copiamos los elementos de cada array en su lado respectivo
-		for (int i = 0; i < centro; i++) {
+		for (int i = 0; i < mid; i++) {
 			izquierda[i] = v[i];
 		}
-		for (int i = 0; i < v.length - centro; i++) {
-			derecha[i] = v[centro + i];
+		for (int i = 0; i < v.length - mid; i++) {
+			derecha[i] = v[mid + i];
 		}
 
 		// Contamos recursivamente las inversiones en cada parte
-		contador_izquierda = algorDyV(izquierda);
-		contador_derecha = algorDyV(derecha);
+		inversiones_izquierda = algorDyV(izquierda);
+		inversiones_derecha = algorDyV(derecha);
 
 		int[] array_resultado = new int[v.length];
-		contador_union = inversiones_union(izquierda, derecha, array_resultado);
+		inversiones_union = inversiones_union(izquierda, derecha, array_resultado);
 
 		for (int i = 0; i < v.length; i++) {
 			v[i] = array_resultado[i];
 		}
-		return (contador_izquierda + contador_derecha + contador_union);
+		return (inversiones_izquierda + inversiones_derecha + inversiones_union);
 	}
 
 	private int inversiones_union(int[] izquierda, int[] derecha, int[] array_resultado) {
@@ -59,25 +59,43 @@ public class AlgorDyV {
 
 		// Buscamos las inversiones que hay entre los dos arrays
 		while ((izquierda.length > a) && (derecha.length > b)) {
+			// c sera la posicion donde insertaremos
 			if (izquierda[a] <= derecha[b]) {
-				array_resultado[c] = izquierda[a++];
+				// No produce inversiones, no sumamos y
+				// metemos el valor en el array resultado
+				array_resultado[c] = izquierda[a];
+				a++;
 			} else {
-				array_resultado[c] = derecha[b++];
+				// Porduce inversiones, metemos en el array
+				// resultado el valor y sumamos inversiones
+				array_resultado[c] = derecha[b];
 				suma += izquierda.length - a;
+				b++;
 			}
 			c++;
 		}
 
 		int i;
+		// Rellenamos con valores restantes usando la variable
+		// c la cual en este momento se encuentra en el ultimo
+		// valor + 1 que hemos introducido previamente
 		if (a == izquierda.length) {
+			// Si he insertado todos los valores de la izquierda
+			// inserto los restantes a la derecha
 			for (i = b; i < derecha.length; i++) {
-				array_resultado[c++] = derecha[i];
+				array_resultado[c] = derecha[i];
+				c++;
 			}
 		} else {
+			// Si he insertado todos los valores de la derecha
+			// inserto los restantes a la izquierda
 			for (i = a; i < izquierda.length; i++) {
-				array_resultado[c++] = izquierda[i];
+				array_resultado[c] = izquierda[i];
+				c++;
 			}
 		}
+		
+		// Devolvemos el resultado de las inversiones
 		return suma;
 	}
 
