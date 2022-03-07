@@ -13,13 +13,11 @@ public class AlgorFuerza {
         long t_comienzo = System.nanoTime();
 
         int contador = 0;
-        int elem;
         for (int i = 0; i < v.length; i++){
             // Comienzo operando por el valor i
-            elem = v[i];
             for(int j = i + 1; j < v.length; j++) {
                 // Voy a iterar sobre todo el array restante
-                if(elem > v[j]) {
+                if((v[i] > v[j]) && (i < j)) {
                     // Si el elemento que esta seleccionado por v[j]
                     // es menor que el elemento que ha seleccionado v[i]
                     // entonces podemos afirmar que hay 1 inversion que
