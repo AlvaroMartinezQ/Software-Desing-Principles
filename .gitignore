@@ -25,4 +25,4 @@ hs_err_pid*
 # Local
 tiempos.csv
 
-target/
+/target
