@@ -31,10 +31,8 @@ public class AlgorDyV {
 		if (v.length <= 1) {
 			return 0;
 		}
-
 		int[] izquierda = new int[centro];
 		int[] derecha = new int[v.length - centro];
-
 		// Copiamos los elementos de cada array en su lado respectivo
 		for (int i = 0; i < centro; i++) {
 			izquierda[i] = v[i];
@@ -47,41 +45,40 @@ public class AlgorDyV {
 		contador_izquierda = algorDyV(izquierda);
 		contador_derecha = algorDyV(derecha);
 
-		int[] resultado = new int[v.length];
-		contador_union = inversiones_union(izquierda, derecha, resultado);
+		int[] array_resultado = new int[v.length];
+		contador_union = inversiones_union(izquierda, derecha, array_resultado);
 
 		for (int i = 0; i < v.length; i++) {
-			v[i] = resultado[i];
+			v[i] = array_resultado[i];
 		}
 		return (contador_izquierda + contador_derecha + contador_union);
 	}
 
-	private int inversiones_union(int[] izquierda, int[] derecha, int[] res) {
-		int a = 0, b = 0, c = 0;
-		int count = 0;
-		int i;
+	private int inversiones_union(int[] izquierda, int[] derecha, int[] array_resultado) {
+		int a = 0, b = 0, c = 0, suma = 0;
 
 		// Buscamos las inversiones que hay entre los dos arrays
-		while ((a < izquierda.length) && (b < derecha.length)) {
+		while ((izquierda.length > a) && (derecha.length > b)) {
 			if (izquierda[a] <= derecha[b]) {
-				res[c] = izquierda[a++];
+				array_resultado[c] = izquierda[a++];
 			} else {
-				res[c] = derecha[b++];
-				count += izquierda.length - a;
+				array_resultado[c] = derecha[b++];
+				suma += izquierda.length - a;
 			}
 			c++;
 		}
 
+		int i;
 		if (a == izquierda.length) {
 			for (i = b; i < derecha.length; i++) {
-				res[c++] = derecha[i];
+				array_resultado[c++] = derecha[i];
 			}
 		} else {
 			for (i = a; i < izquierda.length; i++) {
-				res[c++] = izquierda[i];
+				array_resultado[c++] = izquierda[i];
 			}
 		}
-		return count;
+		return suma;
 	}
 
 	@Override
