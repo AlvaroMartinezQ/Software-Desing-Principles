@@ -21,35 +21,35 @@ public class AlgorDyV {
 		return (this.toString());
 	}
 
-	private int algorDyV(int[] v) {
+	private int algorDyV(int[] array) {
 		int inversiones_izquierda, inversiones_derecha, inversiones_union;
 
 		// Lista de menor longitud a 1 no devuelve inversion
 		// Ya que no tiene con que dividir y comparar
-		if (v.length <= 1) {
+		if (array.length <= 1) {
 			return 0;
 		}
 		// Preparamos los arrays
-		int mid = v.length / 2;
+		int mid = array.length / 2;
 		int[] izquierda = new int[mid];
-		int[] derecha = new int[v.length - mid];
+		int[] derecha = new int[array.length - mid];
 		// Copiamos los elementos de cada array en su lado respectivo
 		for (int i = 0; i < mid; i++) {
-			izquierda[i] = v[i];
+			izquierda[i] = array[i];
 		}
-		for (int i = 0; i < v.length - mid; i++) {
-			derecha[i] = v[mid + i];
+		for (int i = 0; i < array.length - mid; i++) {
+			derecha[i] = array[mid + i];
 		}
 
 		// Contamos recursivamente las inversiones en cada parte
 		inversiones_izquierda = algorDyV(izquierda);
 		inversiones_derecha = algorDyV(derecha);
 
-		int[] array_resultado = new int[v.length];
+		int[] array_resultado = new int[array.length];
 		inversiones_union = inversiones_union(izquierda, derecha, array_resultado);
 
-		for (int i = 0; i < v.length; i++) {
-			v[i] = array_resultado[i];
+		for (int i = 0; i < array.length; i++) {
+			array[i] = array_resultado[i];
 		}
 		return (inversiones_izquierda + inversiones_derecha + inversiones_union);
 	}
