@@ -1,6 +1,4 @@
-package trabajofds2;
-
-import java.util.Scanner;
+package practica_2;
 
 public class MainPruebas {
     public static void main(String[] args){
