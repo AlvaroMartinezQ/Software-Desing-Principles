@@ -1,4 +1,4 @@
-package trabajofds3;
+package practica_3;
 
 import java.util.Comparator;
 
