@@ -1,4 +1,4 @@
-package trabajofds2;
+package practica_2;
 
 import java.util.Random;
 
