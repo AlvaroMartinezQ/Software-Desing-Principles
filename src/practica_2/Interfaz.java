@@ -55,7 +55,6 @@ public class Interfaz extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         generaExcel = new javax.swing.JMenuItem();
         Ayuda = new javax.swing.JMenu();
-        información = new javax.swing.JMenuItem();
         instrucciones = new javax.swing.JMenuItem();
 
         jMenu2.setText("jMenu2");
@@ -244,14 +243,6 @@ public class Interfaz extends javax.swing.JFrame {
         Ayuda.setBackground(new java.awt.Color(0, 0, 204));
         Ayuda.setText("Ayuda");
 
-        información.setText("Información");
-        información.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                informaciónActionPerformed(evt);
-            }
-        });
-        Ayuda.add(información);
-
         instrucciones.setText("Instrucciones");
         instrucciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -379,13 +370,6 @@ public class Interfaz extends javax.swing.JFrame {
         pantalla2.setText(temp.toString());
     }//GEN-LAST:event_ejFBActionPerformed
 
-    private void informaciónActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_informaciónActionPerformed
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(this,"Info:\n  Programa realizado para el estudio empírico de dos algoritmos que buscan calcular el nº de inversiones"+
-                " entre dos arrays(sin repetición y con elementos de 1 a n)\n  Programa hecho por: \n   Álvaro Martinez Quiroga\n   Adrian Martin Martin"+
-                "\n   Sebastián Entrerrios García");
-    }//GEN-LAST:event_informaciónActionPerformed
-
     private void instruccionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_instruccionesActionPerformed
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(this,"De primeras encontraras tres botones habilitados y 3 menu items habilitados:\n"+
@@ -447,7 +431,6 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JButton genManual;
     private javax.swing.JMenuItem generaExcel;
     private javax.swing.JButton hacerPruebasGenerales;
-    private javax.swing.JMenuItem información;
     private javax.swing.JMenuItem instrucciones;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu2;

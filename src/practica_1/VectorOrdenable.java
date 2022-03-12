@@ -1,4 +1,4 @@
-package pratica_1;
+package practica_1;
 
 import java.util.Random;
 
