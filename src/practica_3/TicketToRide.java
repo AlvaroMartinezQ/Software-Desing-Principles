@@ -64,10 +64,10 @@ public class TicketToRide {
 			
 			// Comprobamos si incluir ese nodo en la solucion
 			// genera o no un bucle en el arbol solucion
-			if (!sbm.FindSourceAndDestinationInSubsets(e)) {
+			if (!sbm.findSourceAndDestinationInSubsets(e)) {
 				// Si no hay ningun subset que contenga
 				// el destino y el origen, el nodo es valido
-				sbm.UpdateSubsetsWithEdge(e);
+				sbm.updateSubsetsWithEdge(e);
 				totalEdges++;
 				totalCost += e.getLength();
 			}
