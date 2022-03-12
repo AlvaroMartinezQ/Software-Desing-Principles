@@ -24,14 +24,14 @@ public class SubsetsManager {
 	// End Constructores.
 
 	// Metodos publicos:
-	public boolean FindSourceAndDestinationInSubsets(Edge edge) {
+	public boolean findSourceAndDestinationInSubsets(Edge edge) {
 		for (Subset subset : this.subsets)
-			if (subset.FindBoth(edge.getSource(), edge.getDestination()))
+			if (subset.findBoth(edge.getSource(), edge.getDestination()))
 				return true;
 		return false;
 	}
 
-	public void UpdateSubsetsWithEdge(Edge edge) {
+	public void updateSubsetsWithEdge(Edge edge) {
 		Subset sourceSubset = this.findSubsetOf(edge.getSource());
 		Subset destinationSubset = this.findSubsetOf(edge.getDestination());
 		Subset union = new Subset(sourceSubset, destinationSubset);
@@ -45,7 +45,7 @@ public class SubsetsManager {
 	// Metodos privados:
 	private Subset findSubsetOf(String node) {
 		for (Subset subset : this.subsets)
-			if (subset.Find(node))
+			if (subset.find(node))
 				return subset;
 		return new Subset();
 	}
