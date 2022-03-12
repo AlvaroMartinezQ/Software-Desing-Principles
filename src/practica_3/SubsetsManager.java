@@ -51,11 +51,6 @@ public class SubsetsManager {
 	}
 	// End Metodos privados.
 
-	// Getters:
-	// End Getters.
-
-	// Setters:
-	// End Setters.
 	@Override
 	public String toString() {
 		String s = "";

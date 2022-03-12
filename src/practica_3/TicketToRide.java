@@ -34,6 +34,9 @@ public class TicketToRide {
 	}
 	
 	public void CalcMinSpanningTree() {
+		int nodesToFill = this.nodes.size();
+		System.out.println("--> INITIAL MIN TO MAX NODES KRUSKAL: " + nodesToFill);
+		
 		// Pre-inicio: Creamos el subset
 		// En este momento cada set del subset sera de solo 1 elemento
 		SubsetsManager sbm = new SubsetsManager(this.nodes);
@@ -42,25 +45,35 @@ public class TicketToRide {
 		// 1º Ordenamos los candidatos del problema
 		// de coste menor a coste mayor
 		ArrayList<Edge> nodeList = this.orderNodes(true);
-		System.out.println("--> INITIAL MIN TO MAX NODES KRUSKAL: " + this.nodes.size());
+		
 		for (Edge e: nodeList) {
 			System.out.println(e.getSource() + "-" + e.getDestination() + ": " + e.getLength());
 		}
 		System.out.println();
 		
-		// 2º Seleccionamos el nodo de menor coste, en
-		// este caso el 0
+		int actualEdge = 0;
+		int totalCost = 0;
+		int totalEdges = 0;
 		
-		
-		// 3º Comprobamos si incluir ese nodo en la
-		// solucion genera o no un bucle en el arbol solucion
-		
-		
-		// 4º Si no lo genera (el bulce) lo incluimos
-		// en la solucion, en otro caso se descarta
-		
-		// 5º Repetimos la iteracion si el numero de aristas
-		// incluidos en la solucion es igual al numero de nodos - 1
+		// Repetimos la iteracion si el numero de aristas
+		// incluidos en la solucion es menor al numero de nodos - 1
+		while (totalEdges < nodesToFill - 1) {
+			// Seleccionamos el nodo de menor coste, en
+			// este caso el 0 ya que estan ordenados
+			Edge e = nodeList.get(actualEdge);
+			
+			// Comprobamos si incluir ese nodo en la solucion
+			// genera o no un bucle en el arbol solucion
+			if (!sbm.FindSourceAndDestinationInSubsets(e)) {
+				// Si no hay ningun subset que contenga
+				// el destino y el origen, el nodo es valido
+				sbm.UpdateSubsetsWithEdge(e);
+				totalEdges++;
+				totalCost += e.getLength();
+			}
+			actualEdge++;
+		}
+		System.out.println(sbm.toString() + "Coste: " + totalCost); // Imprimimos los subsets
 	}
 
 	public void CalcMaxSpanningTree() {
@@ -94,6 +107,7 @@ public class TicketToRide {
 	
 	private ArrayList<Edge> orderNodes(boolean minToMax) {
 		ArrayList<Edge> nodeList = new ArrayList<Edge>();
+		// EdgeComparator ec = new EdgeComparator();
 			
 		for (int i = 0; i < this.edges.size(); i++) {
 			for (Edge e: this.edges) {

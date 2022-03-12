@@ -48,7 +48,11 @@ public class Subset {
 	public String toString() {
 		String s = "Subset: ";
 		for (String st: this.nodes) {
-			s += (st + "-");
+			if (this.nodes.indexOf(st) == this.nodes.size() - 1) {
+				s += (st);
+			} else {
+				s += (st + "-");
+			}
 		}
 		return s;
 	}
