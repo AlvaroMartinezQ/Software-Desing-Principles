@@ -17,7 +17,7 @@ public class SubsetsManager {
 		this();
 		for (String node : nodes) {
 			Subset subset = new Subset();
-			subset.AddNode(node);
+			subset.addNode(node);
 			this.subsets.add(subset);
 		}
 	}
