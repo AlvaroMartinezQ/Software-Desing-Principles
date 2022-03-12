@@ -3,8 +3,8 @@ package practica_3;
 public class Main {
     public static void main(String[] args) {
         TicketToRide ticketToRide = new TicketToRide();
-        // ticketToRide.LoadEuropeMap(); // carga Europa 
-        ticketToRide.LoadIberianMap(); // carga peninsula Iberica
+        // ticketToRide.loadAllMap(); // carga Europa 
+        ticketToRide.loadIberianMap(); // carga peninsula Iberica
 
         //Metodo que resuelve Kruskal camino minimo
         ticketToRide.CalcMinSpanningTree();

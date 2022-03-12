@@ -17,7 +17,7 @@ public class TicketToRide {
 	// End Constructores.
 
 	// Metodos publicos:
-	public void LoadIberianMap() {
+	public void loadIberianMap() {
 		// Creacion de los nodos
 		this.edges.add(new Edge("Madrid", "Lisboa", 3));
 		this.edges.add(new Edge("Madrid", "Cadiz", 3));
@@ -29,8 +29,8 @@ public class TicketToRide {
 		this.fillNodes();
 	}
 
-	public void LoadAllMap() {
-		// TODO: load the whole map
+	public void loadAllMap() {
+		
 	}
 	
 	public void CalcMinSpanningTree() {
