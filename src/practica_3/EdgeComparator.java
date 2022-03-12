@@ -11,6 +11,8 @@ public class EdgeComparator implements Comparator<Edge> {
 	// End Constructores.
 
 	// Metodos publicos:
+	
+	// Comparacion de costes
 	@Override
 	public int compare(Edge edge1, Edge edge2) {
 		if (edge1.getLength() == edge2.getLength())
