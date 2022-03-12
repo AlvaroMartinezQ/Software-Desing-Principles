@@ -6,7 +6,7 @@ public class Main {
         // o ticketToRide.LoadEuropeMap(); para el grafo completo
         ticketToRide.LoadIberianMap();
 
-        //Método que resuelve Kruskal
+        //Metodo que resuelve Kruskal
         ticketToRide.CalcMinSpanningTree();
     }
 }
