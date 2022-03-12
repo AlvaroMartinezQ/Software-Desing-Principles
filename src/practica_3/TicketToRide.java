@@ -40,15 +40,18 @@ public class TicketToRide {
 		// Pre-inicio: Creamos el subset
 		// En este momento cada set del subset sera de solo 1 elemento
 		SubsetsManager sbm = new SubsetsManager(this.nodes);
-		System.out.println(sbm.toString()); // Comprobamos los subsets
+		// System.out.println(sbm.toString()); // Para comprobar los subsets
 		
 		// 1º Ordenamos los candidatos del problema
 		// de coste menor a coste mayor
 		ArrayList<Edge> nodeList = this.orderNodes(true);
 		
+		// Para comprobar la ordenacion de nodos
+		/*
 		for (Edge e: nodeList) {
 			System.out.println(e.getSource() + "-" + e.getDestination() + ": " + e.getLength());
 		}
+		*/
 		System.out.println();
 		
 		int actualEdge = 0;
@@ -57,9 +60,11 @@ public class TicketToRide {
 		
 		// Repetimos la iteracion si el numero de aristas
 		// incluidos en la solucion es menor al numero de nodos - 1
-		while (totalEdges < nodesToFill - 1) {
-			// Seleccionamos el nodo de menor coste, en
-			// este caso el 0 ya que estan ordenados
+		while (
+			totalEdges < nodesToFill - 1 && // mientras no haya incluido ya todos los nodos
+			actualEdge < nodeList.size() // mientras me queden nodos
+		) {
+			// Seleccionamos el nodo actual sobre el que operar
 			Edge e = nodeList.get(actualEdge);
 			
 			// Comprobamos si incluir ese nodo en la solucion
@@ -67,13 +72,33 @@ public class TicketToRide {
 			if (!sbm.findSourceAndDestinationInSubsets(e)) {
 				// Si no hay ningun subset que contenga
 				// el destino y el origen, el nodo es valido
+				System.out.println(
+					"Inlcuyendo nodo: " +
+					e.getSource() +
+					"-" +
+					e.getDestination() +
+					" con coste: " + e.getLength() + " en la solucion"
+				);
 				sbm.updateSubsetsWithEdge(e);
 				totalEdges++;
 				totalCost += e.getLength();
+			} else {
+				System.out.println(
+					"No inlcuyendo nodo: " +
+					e.getSource() +
+					"-" +
+					e.getDestination() +
+					" con coste: " + e.getLength() +
+					" no es factible para la solucion, genera un bucle en el grafo"
+				);
 			}
 			actualEdge++;
 		}
-		System.out.println(sbm.toString() + "Coste: " + totalCost); // Imprimimos los subsets
+		
+		System.out.println(
+				sbm.toString() +
+				"Coste: " + totalCost
+		); // Imprimimos los subsets
 	}
 
 	public void CalcMaxSpanningTree() {
