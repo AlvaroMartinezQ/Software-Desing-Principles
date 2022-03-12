@@ -23,15 +23,15 @@ public class Subset {
 	// End Constructores.
 
 	// Metodos publicos:
-	public void AddNode(String node) {
+	public void addNode(String node) {
 		this.nodes.add(node);
 	}
 
-	public boolean Find(String node) {
+	public boolean find(String node) {
 		return this.nodes.contains(node);
 	}
 
-	public boolean FindBoth(String node1, String node2) {
+	public boolean findBoth(String node1, String node2) {
 		return this.nodes.contains(node1) && this.nodes.contains(node2);
 	}
 	// End Metodos publicos.
