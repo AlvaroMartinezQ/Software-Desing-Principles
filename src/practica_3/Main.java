@@ -6,7 +6,10 @@ public class Main {
         // ticketToRide.LoadEuropeMap(); // carga Europa 
         ticketToRide.LoadIberianMap(); // carga peninsula Iberica
 
-        //Metodo que resuelve Kruskal
+        //Metodo que resuelve Kruskal camino minimo
         ticketToRide.CalcMinSpanningTree();
+        
+        // Metodo que resuelve Kruskal (?) camino maximo
+        ticketToRide.CalcMaxSpanningTree();
     }
 }

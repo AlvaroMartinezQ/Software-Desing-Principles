@@ -37,10 +37,11 @@ public class TicketToRide {
 		// 1º Ordenamos los candidatos del problema
 		// de coste menor a coste mayor
 		ArrayList<Edge> nodeList = this.orderNodes(true);
-		System.out.println("INITIAL ORDERED NODES KRUSKAL: " + this.nodes.size());
+		System.out.println("--> INITIAL MIN TO MAX NODES KRUSKAL: " + this.nodes.size());
 		for (Edge e: nodeList) {
 			System.out.println(e.getSource() + "-" + e.getDestination() + ": " + e.getLength());
 		}
+		System.out.println();
 		
 		// 2º Seleccionamos el nodo de menor coste, en
 		// este caso el 0
@@ -58,7 +59,12 @@ public class TicketToRide {
 	}
 
 	public void CalcMaxSpanningTree() {
-
+		ArrayList<Edge> nodeList = this.orderNodes(false);
+		System.out.println("--> INITIAL MAX TO MIN NODES KRUSKAL: " + this.nodes.size());
+		for (Edge e: nodeList) {
+			System.out.println(e.getSource() + "-" + e.getDestination() + ": " + e.getLength());
+		}
+		System.out.println();
 	}
 	
 	// End Metodos publicos.
@@ -74,7 +80,7 @@ public class TicketToRide {
 				this.nodes.add(edge.getDestination());
 			}
 		}
-		System.out.println("INITIAL NODES: " + this.nodes.size());
+		System.out.println("--> INITIAL NON ORDERED NODES: " + this.nodes.size());
 		for (Edge e: this.edges) {
 			System.out.println(e.getSource() + "-" + e.getDestination() + ": " + e.getLength());
 		}
