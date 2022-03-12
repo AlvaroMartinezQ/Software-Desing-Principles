@@ -56,5 +56,12 @@ public class SubsetsManager {
 
 	// Setters:
 	// End Setters.
-
+	@Override
+	public String toString() {
+		String s = "";
+		for (Subset subset: this.subsets) {
+			s = s + (subset.toString() + "\n");
+		}
+		return s;
+	}
 }

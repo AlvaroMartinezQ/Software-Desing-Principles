@@ -44,5 +44,12 @@ public class Subset {
 
 	// Setters:
 	// End Setters.
-
+	@Override
+	public String toString() {
+		String s = "Subset: ";
+		for (String st: this.nodes) {
+			s += (st + "-");
+		}
+		return s;
+	}
 }

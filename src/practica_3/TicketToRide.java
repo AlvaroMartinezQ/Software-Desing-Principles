@@ -34,6 +34,11 @@ public class TicketToRide {
 	}
 	
 	public void CalcMinSpanningTree() {
+		// Pre-inicio: Creamos el subset
+		// En este momento cada set del subset sera de solo 1 elemento
+		SubsetsManager sbm = new SubsetsManager(this.nodes);
+		System.out.println(sbm.toString()); // Comprobamos los subsets
+		
 		// 1º Ordenamos los candidatos del problema
 		// de coste menor a coste mayor
 		ArrayList<Edge> nodeList = this.orderNodes(true);
@@ -54,8 +59,8 @@ public class TicketToRide {
 		// 4º Si no lo genera (el bulce) lo incluimos
 		// en la solucion, en otro caso se descarta
 		
-		// 5º Repetimos la iteracion si el numero de nodos
-		// incluidos en la solucion es igual al numero de nodos iniciales
+		// 5º Repetimos la iteracion si el numero de aristas
+		// incluidos en la solucion es igual al numero de nodos - 1
 	}
 
 	public void CalcMaxSpanningTree() {

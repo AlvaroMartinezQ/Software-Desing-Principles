@@ -10,6 +10,6 @@ public class Main {
         ticketToRide.CalcMinSpanningTree();
         
         // Metodo que resuelve Kruskal (?) camino maximo
-        ticketToRide.CalcMaxSpanningTree();
+        // ticketToRide.CalcMaxSpanningTree();
     }
 }
