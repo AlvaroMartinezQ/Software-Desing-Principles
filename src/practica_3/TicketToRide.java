@@ -170,10 +170,10 @@ public class TicketToRide {
 	public void loadAllMap() {
 		// Creacion de los nodos
 		this.edges.add(new Edge("Madrid", "Lisboa", 3));
-		this.edges.add(new Edge("Madrid", "Cadiz", 3));
+		this.edges.add(new Edge("Madrid", "Cádiz", 3));
 		this.edges.add(new Edge("Madrid", "Barcelona", 2));
 		this.edges.add(new Edge("Madrid", "Pamplona", 6));
-		this.edges.add(new Edge("Lisboa", "Cadiz", 2));
+		this.edges.add(new Edge("Lisboa", "Cádiz", 2));
 		this.edges.add(new Edge("Barcelona", "Pamplona", 4));
                 this.edges.add(new Edge("Barcelona", "Marsella", 4));
                 this.edges.add(new Edge("Pamplona", "París", 4));
@@ -215,7 +215,7 @@ public class TicketToRide {
                 this.edges.add(new Edge("Sebastopol", "Erzurum", 4));
                 this.edges.add(new Edge("Sebastopol", "Sochi", 2));
                 this.edges.add(new Edge("Sebastopol", "Rostov", 4));
-                this.edges.add(new Edge("Estambul", "Ankra", 4));
+                this.edges.add(new Edge("Estambul", "Ankara", 4));
                 this.edges.add(new Edge("Estambul", "Esmirna", 4));
                 this.edges.add(new Edge("Ankara", "Esmirna", 6));
                 this.edges.add(new Edge("Ankara", "Erzurum", 3));
@@ -239,7 +239,7 @@ public class TicketToRide {
                 this.edges.add(new Edge("San Petersburgo", "Estocolmo", 16));
                 this.edges.add(new Edge("Riga", "Danzig", 3));
                 this.edges.add(new Edge("Estocolmo", "Copenhague", 3));
-                this.edges.add(new Edge("Daznig", "Berlín", 4));
+                this.edges.add(new Edge("Danzig", "Berlín", 4));
                 this.edges.add(new Edge("Viena", "Munich", 3));
                 this.edges.add(new Edge("Viena", "Berlín", 3));
                 this.edges.add(new Edge("Munich", "Frankfurt", 2));
