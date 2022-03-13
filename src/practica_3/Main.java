@@ -7,9 +7,9 @@ public class Main {
         ticketToRide.loadIberianMap(); // carga peninsula Iberica
 
         //Metodo que resuelve Kruskal camino minimo
-        ticketToRide.CalcMinSpanningTree();
+        ticketToRide.calcMinSpanningTree();
         
         // Metodo que resuelve Kruskal (?) camino maximo
-        ticketToRide.CalcMaxSpanningTree();
+        ticketToRide.calcMaxSpanningTree();
     }
 }
