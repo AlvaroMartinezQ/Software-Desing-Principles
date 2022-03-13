@@ -1,6 +1,7 @@
 package practica_3;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class TicketToRide {
 
@@ -42,9 +43,10 @@ public class TicketToRide {
 		SubsetsManager sbm = new SubsetsManager(this.nodes);
 		// System.out.println(sbm.toString()); // Para comprobar los subsets
 		
-		// 1� Ordenamos los candidatos del problema
+		// 1º Ordenamos los candidatos del problema
 		// de coste menor a coste mayor
-		ArrayList<Edge> nodeList = this.orderNodes(true);
+                ArrayList<Edge> temp_edges = this.edges;
+                Collections.sort(temp_edges, new EdgeComparator());
 		
 		// Para comprobar la ordenacion de nodos
 		/*
@@ -62,10 +64,10 @@ public class TicketToRide {
 		// incluidos en la solucion es menor al numero de nodos - 1
 		while (
 			totalEdges < nodesToFill - 1 && // mientras no haya incluido ya todos los nodos
-			actualEdge < nodeList.size() // mientras me queden nodos
+			actualEdge < temp_edges.size() // mientras me queden nodos
 		) {
 			// Seleccionamos el nodo actual sobre el que operar
-			Edge e = nodeList.get(actualEdge);
+			Edge e = temp_edges.get(actualEdge);
 			
 			// Comprobamos si incluir ese nodo en la solucion
 			// genera o no un bucle en el arbol solucion
@@ -102,12 +104,72 @@ public class TicketToRide {
 	}
 
 	public void CalcMaxSpanningTree() {
-		ArrayList<Edge> nodeList = this.orderNodes(false);
-		System.out.println("--> INITIAL MAX TO MIN NODES KRUSKAL: " + this.nodes.size());
+		int nodesToFill = this.nodes.size();
+		System.out.println("--> INITIAL MAX TO MIN NODES KRUSKAL: " + nodesToFill);
+		
+		// Pre-inicio: Creamos el subset
+		// En este momento cada set del subset sera de solo 1 elemento
+		SubsetsManager sbm = new SubsetsManager(this.nodes);
+		// System.out.println(sbm.toString()); // Para comprobar los subsets
+		
+		// 1º Ordenamos los candidatos del problema
+		// de coste mayor a menor coste
+                ArrayList<Edge> temp_edges = this.edges;
+                Collections.sort(temp_edges, new EdgeComparatorInverse());
+		
+		// Para comprobar la ordenacion de nodos
+		/*
 		for (Edge e: nodeList) {
 			System.out.println(e.getSource() + "-" + e.getDestination() + ": " + e.getLength());
 		}
+		*/
 		System.out.println();
+		
+		int actualEdge = 0;
+		int totalCost = 0;
+		int totalEdges = 0;
+		
+		// Repetimos la iteracion si el numero de aristas
+		// incluidos en la solucion es menor al numero de nodos - 1
+		while (
+			totalEdges < nodesToFill - 1 && // mientras no haya incluido ya todos los nodos
+			actualEdge < temp_edges.size() // mientras me queden nodos
+		) {
+			// Seleccionamos el nodo actual sobre el que operar
+			Edge e = temp_edges.get(actualEdge);
+			
+			// Comprobamos si incluir ese nodo en la solucion
+			// genera o no un bucle en el arbol solucion
+			if (!sbm.findSourceAndDestinationInSubsets(e)) {
+				// Si no hay ningun subset que contenga
+				// el destino y el origen, el nodo es valido
+				System.out.println(
+					"Inlcuyendo nodo: " +
+					e.getSource() +
+					"-" +
+					e.getDestination() +
+					" con coste: " + e.getLength() + " en la solucion"
+				);
+				sbm.updateSubsetsWithEdge(e);
+				totalEdges++;
+				totalCost += e.getLength();
+			} else {
+				System.out.println(
+					"No inlcuyendo nodo: " +
+					e.getSource() +
+					"-" +
+					e.getDestination() +
+					" con coste: " + e.getLength() +
+					" no es factible para la solucion, genera un bucle en el grafo"
+				);
+			}
+			actualEdge++;
+		}
+		
+		System.out.println(
+				sbm.toString() +
+				"Coste: " + totalCost
+		); // Imprimimos los subsets
 	}
 	
 	// End Metodos publicos.
@@ -129,26 +191,6 @@ public class TicketToRide {
 		}
 		System.out.println();
 	}
-	
-	private ArrayList<Edge> orderNodes(boolean minToMax) {
-		ArrayList<Edge> nodeList = new ArrayList<Edge>();
-		// EdgeComparator ec = new EdgeComparator();
-			
-		for (int i = 0; i < this.edges.size(); i++) {
-			for (Edge e: this.edges) {
-				if (i == e.getLength() && !nodeList.contains(e)) {
-					if (minToMax) {
-						nodeList.add(e);
-					} else {
-						nodeList.add(0, e);
-					}
-				}
-			}
-		}
-		
-		return nodeList;
-	}
-	
 	// End Metodos privados.
 
 	// Getters:
