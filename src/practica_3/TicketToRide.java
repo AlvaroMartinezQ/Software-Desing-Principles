@@ -55,14 +55,14 @@ public class TicketToRide {
 			if (!sbm.findSourceAndDestinationInSubsets(e)) {
 				// Si no hay ningun subset que contenga
 				// el destino y el origen, el nodo es valido
-				System.out.println("Inlcuyendo nodo: " + e.getSource() + "-" + e.getDestination() + " con coste: "
-						+ e.getLength() + " en la solucion");
+				System.out.println("Incluyendo nodo: " + e.getSource() + "-" + e.getDestination() + " con coste: "
+						+ e.getLength() + " en la solución");
 				sbm.updateSubsetsWithEdge(e);
 				totalEdges++;
 				totalCost += e.getLength();
 			} else {
-				System.out.println("No inlcuyendo nodo: " + e.getSource() + "-" + e.getDestination() + " con coste: "
-						+ e.getLength() + " no es factible para la solucion, genera un bucle en el grafo");
+				System.out.println("No incluyendo nodo: " + e.getSource() + "-" + e.getDestination() + " con coste: "
+						+ e.getLength() + " no es factible para la solución, genera un bucle en el grafo");
 			}
 			actualEdge++;
 		}
@@ -107,14 +107,14 @@ public class TicketToRide {
 			if (!sbm.findSourceAndDestinationInSubsets(e)) {
 				// Si no hay ningun subset que contenga
 				// el destino y el origen, el nodo es valido
-				System.out.println("Inlcuyendo nodo: " + e.getSource() + "-" + e.getDestination() + " con coste: "
-						+ e.getLength() + " en la solucion");
+				System.out.println("Incluyendo nodo: " + e.getSource() + "-" + e.getDestination() + " con coste: "
+						+ e.getLength() + " en la solución");
 				sbm.updateSubsetsWithEdge(e);
 				totalEdges++;
 				totalCost += e.getLength();
 			} else {
-				System.out.println("No inlcuyendo nodo: " + e.getSource() + "-" + e.getDestination() + " con coste: "
-						+ e.getLength() + " no es factible para la solucion, genera un bucle en el grafo");
+				System.out.println("No incluyendo nodo: " + e.getSource() + "-" + e.getDestination() + " con coste: "
+						+ e.getLength() + " no es factible para la solución, genera un bucle en el grafo");
 			}
 			actualEdge++;
 		}
