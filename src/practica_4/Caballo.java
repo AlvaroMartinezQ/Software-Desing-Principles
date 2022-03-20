@@ -28,12 +28,10 @@ public class Caballo implements Recorrido {
 		long t_comienzo = System.nanoTime();
 		switch (tipo) {
 		case 1:
-			exito = buscarCaminoAbierto(pos1, pos2, 1, tablero, movimientoFilas, movimientoColumnas); // Comenzaremos en
-																										// la posicion 1
+			exito = buscarCaminoAbierto(pos1, pos2, 1, tablero, movimientoFilas, movimientoColumnas);
 			break;
 		case 2:
-			exito = buscarCaminoCerrado(pos1, pos2, 0, tablero, movimientoFilas, movimientoColumnas); // Comenzaremos en
-																										// la posicion 1
+			exito = buscarCaminoCerrado(pos1, pos2, 0, tablero, movimientoFilas, movimientoColumnas);
 			break;
 		default:
 			System.out.println("Tipo de recorrido erroneo.");
