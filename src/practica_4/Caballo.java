@@ -8,7 +8,7 @@ public class Caballo implements Recorrido {
 	// Inicio de backtracking
 	// Setup previo
 	
-	public boolean buscaCamino(int pos1, int pos2, int filas, int columnas) {
+	public boolean buscaCamino(int pos1, int pos2, int filas, int columnas, int tipo) {
 		boolean exito = false;
 		int[][] tablero = new int[filas][columnas];
 		for(int x = 0; x < filas; x++){
@@ -26,7 +26,18 @@ public class Caballo implements Recorrido {
 		
 		tablero[pos1][pos2] = 1; // Casilla ya visitada (la inicial, 0)
 		long t_comienzo = System.nanoTime();
-		exito = buscarCaminoAbierto(pos1, pos2, 1, tablero, movimientoFilas, movimientoColumnas); // Comenzaremos en la posicion 1
+		switch (tipo) {
+			case 1:
+				exito = buscarCaminoAbierto(pos1, pos2, 1, tablero, movimientoFilas, movimientoColumnas); // Comenzaremos en la posicion 1
+				break;
+			case 2:
+				exito = buscarCaminoCerrado(pos1, pos2, 0, tablero, movimientoFilas, movimientoColumnas); // Comenzaremos en la posicion 1
+				break;
+			default:
+				System.out.println("Tipo de recorrido erroneo.");
+				return exito;
+		}
+		
 		long t_fin = System.nanoTime();
 		imprimeTablero(tablero, exito, (t_fin- t_comienzo));
 		
@@ -34,7 +45,7 @@ public class Caballo implements Recorrido {
 	}
 	
 	// ----------------------
-	// Metodo de backtracking
+	// Metodos backtracking
 	
 	private boolean buscarCaminoAbierto(int pos1, int pos2, int movimiento, int[][] tablero, int[] movX, int[] movY) {
 		if(movimiento == tablero.length * tablero[0].length){
@@ -58,6 +69,26 @@ public class Caballo implements Recorrido {
         return false;
 	}
 	
+	public boolean buscarCaminoCerrado(int pos1, int pos2, int i, int[][] tablero, int[] movX, int[] movY){
+        if(i == tablero.length * tablero[0].length){
+            return true;
+        }
+        
+        for(int j=0; j < movX.length; j++){
+            int l = pos1 + movX[j];
+            int m = pos2 + movY[j];
+            if(rango(l, m, i+1, tablero)){
+            	tablero[pos1][pos2] = i + 1;
+                if(buscarCaminoCerrado(l, m, i+1, tablero, movX, movY)){
+                    tablero[pos1][pos2] = i+1;
+                    return true;
+                }
+            }
+        }
+        tablero[pos1][pos2] = -1;
+        return false;
+    }
+	
 	// ----------------------
 	// Utilidades de la clase
 	
@@ -65,10 +96,26 @@ public class Caballo implements Recorrido {
         return(x >= 0 && x < array.length && y >= 0 && y < array[0].length && array[x][y] == -1);
     }
 	
+	private boolean rango(int a, int b, int i, int[][] tablero) {
+		if ((a >= 0 && a < tablero.length) && (b >= 0 && b < tablero[0].length)) {
+			if (i < tablero.length * tablero[0].length) {
+				return tablero[a][b] == -1;
+			} else {
+				return tablero[a][b] == 1;
+			}
+		}
+		return false;
+	}
+	
 	private void imprimeTablero(int[][] tablero, boolean esSolucion, long tiempo) {
 		System.out.println("------");
 		System.out.println("Tablero con dimensiones de " + tablero.length + " filas por " + tablero[0].length + " columnas.");
 		System.out.println("Ha tardado en ejecutar: " + tiempo / 1000000 + " ms.");
+		if (esSolucion) {
+			System.out.println("El algoritmo tiene solucion para el caso introducido.");
+		} else {
+			System.out.println("El algoritmo no tiene solucion para el caso introducido.");
+		}
 		for (int f = 0; f < tablero.length; f++) {
 			for (int c = 0; c < tablero[0].length; c++) {
 				if (esSolucion) {
@@ -100,8 +147,11 @@ public class Caballo implements Recorrido {
 		// Pide columna donde empezara el caballo
 		System.out.println("Columna donde empezara el caballo: ");  
 		int pos2 = in.nextInt();
+		// Pide columna donde empezara el caballo
+		System.out.println("Tipo de camino, 1 abierto, 2 cerrado: ");  
+		int tipo = in.nextInt();
 		in.close();
-		return buscaCamino(pos1, pos2, filas, columnas);
+		return buscaCamino(pos1, pos2, filas, columnas, tipo);
 	}
 
 	@Override
