@@ -75,11 +75,11 @@ public class Caballo implements Recorrido {
         }
         
         for(int j=0; j < movX.length; j++){
-            int l = pos1 + movX[j];
-            int m = pos2 + movY[j];
-            if(rango(l, m, i+1, tablero)){
+            int proximaFila = pos1 + movX[j];
+            int proximaColumna = pos2 + movY[j];
+            if(rango(proximaFila, proximaColumna, i+1, tablero)){
             	tablero[pos1][pos2] = i + 1;
-                if(buscarCaminoCerrado(l, m, i+1, tablero, movX, movY)){
+                if(buscarCaminoCerrado(proximaFila, proximaColumna, i+1, tablero, movX, movY)){
                     tablero[pos1][pos2] = i+1;
                     return true;
                 }
