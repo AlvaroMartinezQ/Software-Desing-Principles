@@ -24,9 +24,9 @@ public class TablaBasica extends TablaDatos{
         Caballo c = new Caballo();
         int ps1 = pos1;
         int ps2 = pos2;
+        Scanner sc = new Scanner(System.in);
         for(int i = 0; i < Large; i++){
             if(x == 2){
-                Scanner sc = new Scanner(System.in);
                 do{
                     System.out.println("Introduce la pos1, entre 0 y " + m[i]);
                     ps1 = sc.nextInt();
@@ -44,6 +44,7 @@ public class TablaBasica extends TablaDatos{
             cerrado[i] = temp.funciono;
             tiempoCerrado[i] = temp.tiempo;
         }
+        sc.close();
     }
     
     private void generaTxT(String nombre){
