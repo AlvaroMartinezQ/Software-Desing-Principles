@@ -30,11 +30,11 @@ public class TablaComplicados extends TablaDatos{
                 do{
                     System.out.println("Introduce la pos1, entre 0 y " + m[i]);
                     ps1 = sc.nextInt();
-                }while(ps1 >= 0 && ps1 <= m[i]);
+                }while(ps1 < 0 || ps1 > m[i]);
                 do{
                     System.out.println("Introduce la pos2, entre 0 y " + n[i]);
                     ps2 = sc.nextInt();
-                }while(ps2 >= 0 && ps2 <= n[i]);
+                }while(ps2 < 0 || ps2 > n[i]);
             }
             titulos[i] = m[i]+"x"+n[i];
             Datos temp = c.buscaCamino(pos1, pos2, m[i], n[i], 1);
