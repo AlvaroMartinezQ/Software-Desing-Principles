@@ -8,7 +8,7 @@ public class Caballo implements Recorrido {
 	// Inicio de backtracking
 	// Setup previo
 
-	public boolean buscaCamino(int pos1, int pos2, int filas, int columnas, int tipo) {
+	public Datos buscaCamino(int pos1, int pos2, int filas, int columnas, int tipo) {
 		boolean exito = false;
 		int[][] tablero = new int[filas][columnas];
 		for (int x = 0; x < filas; x++) {
@@ -21,7 +21,7 @@ public class Caballo implements Recorrido {
 		int[] movimientoColumnas = { -1, -2, -2, -1, 1, 2, 2, 1 };
 		if (pos1 >= tablero.length || pos2 >= tablero[0].length) {
 			System.out.println("Fallo en las posiciones iniciales, se excede el limite del tablero.");
-			return exito;
+			return new Datos(exito, 0);
 		}
 
 		tablero[pos1][pos2] = 1; // Casilla ya visitada (la inicial, 0)
@@ -35,13 +35,13 @@ public class Caballo implements Recorrido {
 			break;
 		default:
 			System.out.println("Tipo de recorrido erroneo.");
-			return exito;
+			return new Datos(exito, 0);
 		}
 
 		long t_fin = System.nanoTime();
 		imprimeTablero(tablero, exito, (t_fin - t_comienzo));
 
-		return exito;
+		return new Datos(exito, (t_fin - t_comienzo));
 	}
 
 	// ----------------------
@@ -152,13 +152,32 @@ public class Caballo implements Recorrido {
 		System.out.println("Tipo de camino, 1 abierto, 2 cerrado: ");
 		int tipo = in.nextInt();
 		in.close();
-		return buscaCamino(pos1, pos2, filas, columnas, tipo);
+		return buscaCamino(pos1, pos2, filas, columnas, tipo).funciono;
 	}
 
 	@Override
 	public void execPruebas() {
-		// TODO Auto-generated method stub
-
+		Scanner in = new Scanner(System.in);
+                System.out.println("Tipo de pruebas, 1 básicas, 2 complicadas: ");
+		int tipo = in.nextInt();
+                int i;
+                do{
+                    System.out.println("Introduce 1 si sale de la casilla 0,0 o 2 si la introduciras manualmente");
+                    i = in.nextInt();
+                }while(i != 1 && i != 2);
+		in.close();
+                switch(tipo){
+                    case 1:
+                        TablaBasica tb = new TablaBasica(0,0,i);
+                        System.out.println(tb.toString());
+                        break;
+                    case 2:
+                        TablaComplicados tc = new TablaComplicados(0,0,i);
+                        System.out.println(tc.toString());
+                        break;
+                    default:
+                        System.out.println("Tipo de prueba errónea");
+                }
 	}
 
 }
