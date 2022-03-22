@@ -158,26 +158,23 @@ public class Caballo implements Recorrido {
 	@Override
 	public void execPruebas() {
 		Scanner in = new Scanner(System.in);
-                System.out.println("Tipo de pruebas, 1 básicas, 2 complicadas: ");
-		int tipo = in.nextInt();
-                int i;
+                int tipo;
                 do{
-                    System.out.println("Introduce 1 si sale de la casilla 0,0 o 2 si la introduciras manualmente");
-                    i = in.nextInt();
-                }while(i != 1 && i != 2);
-		in.close();
+                    System.out.println("Tipo de pruebas, 1 básicas, 2 complicadas: ");
+                    tipo = in.nextInt();
+                }while(tipo != 1 && tipo != 2);
+                
                 switch(tipo){
                     case 1:
-                        TablaBasica tb = new TablaBasica(0,0,i);
+                        TablaBasica tb = new TablaBasica();
                         System.out.println(tb.toString());
                         break;
                     case 2:
-                        TablaComplicados tc = new TablaComplicados(0,0,i);
+                        TablaComplicados tc = new TablaComplicados();
                         System.out.println(tc.toString());
                         break;
-                    default:
-                        System.out.println("Tipo de prueba errónea");
                 }
+		in.close();
 	}
 
 }
