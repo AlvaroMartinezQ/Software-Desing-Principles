@@ -1,3 +1,3 @@
 # SDP
 
-Software design principles programs :coffee:
+Software design and algorithms programs ☕
