@@ -32,7 +32,7 @@ public class Caballo implements Recorrido {
 		long t_comienzo = System.nanoTime();
 		switch (tipo) {
 		case 1:
-			exito = buscarCaminoAbierto(pos1, pos2, 1, tablero, movimientoFilasV1, movimientoColumnasV1);
+			exito = buscarCaminoAbierto(pos1, pos2, 1, tablero, movimientoFilasV2, movimientoColumnasV2);
 			break;
 		case 2:
 			exito = buscarCaminoCerrado(pos1, pos2, 0, tablero, movimientoFilasV1, movimientoColumnasV1);
@@ -77,13 +77,12 @@ public class Caballo implements Recorrido {
 			return true;
 		}
 
-		for (int j = 0; j < movX.length; j++) {
+		for (int j = 0; j < this.MOVS; j++) {
 			int proximaFila = pos1 + movX[j];
 			int proximaColumna = pos2 + movY[j];
-			int aux = movimiento;
-			if (rango(proximaFila, proximaColumna, aux++, tablero)) {
+			if (rango(proximaFila, proximaColumna, movimiento+1, tablero)) {
 				if (buscarCaminoCerrado(proximaFila, proximaColumna, movimiento + 1, tablero, movX, movY)) {
-					tablero[pos1][pos2] = movimiento;
+					tablero[pos1][pos2] = movimiento+1;
 					return true;
 				}
 			}
