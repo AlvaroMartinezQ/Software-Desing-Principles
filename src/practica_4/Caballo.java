@@ -3,11 +3,11 @@ package practica_4;
 import java.util.Scanner;
 
 public class Caballo implements Recorrido {
-	
+
 	private final int MOVS = 8;
 	private int filas = 0;
 	private int columnas = 0;
-	
+
 	// Setup
 	public Datos buscaCamino(int pos1, int pos2, int filas, int columnas, int tipo) {
 		boolean exito = false;
@@ -17,7 +17,7 @@ public class Caballo implements Recorrido {
 				tablero[x][y] = -1;
 			}
 		}
-		
+
 		// Orden de movimientos
 		int movimientoFilasV1[] = { -2, -1, 1, 2, -2, -1, 1, 2 };
 		int movimientoColumnasV1[] = { -1, -2, -2, -1, 1, 2, 2, 1 };
@@ -31,15 +31,15 @@ public class Caballo implements Recorrido {
 		tablero[pos1][pos2] = 0; // Casilla ya visitada (la inicial, 0)
 		long t_comienzo = System.nanoTime();
 		switch (tipo) {
-			case 1:
-				exito = buscarCaminoAbierto(pos1, pos2, 1, tablero, movimientoFilasV1, movimientoColumnasV1);
-				break;
-			case 2:
-				exito = buscarCaminoCerrado(pos1, pos2, 0, tablero, movimientoFilasV1, movimientoColumnasV1);
-				break;
-			default:
-				System.out.println("Tipo de recorrido erroneo.");
-				return new Datos(exito, 0);
+		case 1:
+			exito = buscarCaminoAbierto(pos1, pos2, 1, tablero, movimientoFilasV1, movimientoColumnasV1);
+			break;
+		case 2:
+			exito = buscarCaminoCerrado(pos1, pos2, 0, tablero, movimientoFilasV1, movimientoColumnasV1);
+			break;
+		default:
+			System.out.println("Tipo de recorrido erroneo.");
+			return new Datos(exito, 0);
 		}
 
 		long t_fin = System.nanoTime();
@@ -117,8 +117,7 @@ public class Caballo implements Recorrido {
 
 	private void imprimeTablero(int[][] tablero, boolean esSolucion, long tiempo) {
 		System.out.println("------");
-		System.out.println(
-				"Tablero con dimensiones de " + this.filas + " filas por " + this.columnas + " columnas.");
+		System.out.println("Tablero con dimensiones de " + this.filas + " filas por " + this.columnas + " columnas.");
 		System.out.println("Ha tardado en ejecutar: " + tiempo / 1000000 + " ms.");
 		if (esSolucion) {
 			System.out.println("El algoritmo tiene solucion para el caso introducido.");
@@ -170,22 +169,22 @@ public class Caballo implements Recorrido {
 	public void execPruebas() {
 		System.out.println("## Ejecutando metodo exec de pruebas ##");
 		Scanner in = new Scanner(System.in);
-                int tipo;
-                do{
-                    System.out.println("Tipo de pruebas, 1 basicas, 2 complicadas: ");
-                    tipo = in.nextInt();
-                }while(tipo != 1 && tipo != 2);
-                
-                switch(tipo){
-                    case 1:
-                        TablaBasica tb = new TablaBasica();
-                        System.out.println(tb.toString());
-                        break;
-                    case 2:
-                        TablaComplicados tc = new TablaComplicados();
-                        System.out.println(tc.toString());
-                        break;
-                }
+		int tipo;
+		do {
+			System.out.println("Tipo de pruebas, 1 basicas, 2 complicadas: ");
+			tipo = in.nextInt();
+		} while (tipo != 1 && tipo != 2);
+
+		switch (tipo) {
+		case 1:
+			TablaBasica tb = new TablaBasica();
+			System.out.println(tb.toString());
+			break;
+		case 2:
+			TablaComplicados tc = new TablaComplicados();
+			System.out.println(tc.toString());
+			break;
+		}
 		in.close();
 	}
 
