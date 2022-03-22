@@ -4,7 +4,8 @@ public class Main {
 	
 	public static void main(String[] argv) {
 		Caballo c = new Caballo();
-		c.execPruebas();
+		c.execUsuario();
+		// c.execPruebas();
 	}
 
 }

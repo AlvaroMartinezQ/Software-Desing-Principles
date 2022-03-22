@@ -1,4 +1,4 @@
-package trabajofds4;
+package practica_4;
 
 public class Datos {
     public boolean funciono;

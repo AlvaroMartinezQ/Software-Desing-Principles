@@ -1,4 +1,4 @@
-package trabajofds4;
+package practica_4;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
