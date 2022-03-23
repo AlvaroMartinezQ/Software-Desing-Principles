@@ -9,16 +9,18 @@ public class TablaBasica extends TablaDatos{
     public static final int[] m = {3,4,5,6,3,3,5,3,3,3,3,4,4,5,6,8,6,6,10,12};
     public static final int[] n = {3,4,5,6,10,12,6,4,5,6,8,6,3,3,3,3,4,5,3,3};
     
-    public TablaBasica(){
+    public TablaBasica(boolean txt){
         this.titulos = new String[Large];
         this.abierto = new boolean[Large];
         this.cerrado = new boolean[Large];
         this.tiempoAbierto = new long[Large];
         this.tiempoCerrado = new long[Large];
+        this.tablerosAbiertos = new String[Large];
+        this.tablerosCerrados = new String[Large];
         
         execPruebas();
         
-        generaTxT("TablaBasica.txt");
+        if (txt) generaTxT("TablaBasica.txt");
     }
     
     private void execPruebas(){
@@ -28,9 +30,11 @@ public class TablaBasica extends TablaDatos{
             Datos temp = c.buscaCamino(ps1, ps2, m[i], n[i], 1);
             abierto[i] = temp.funciono;
             tiempoAbierto[i] = temp.tiempo;
+            tablerosAbiertos[i] = temp.tablero;
             temp = c.buscaCamino(ps1, ps2, m[i], n[i], 2);
             cerrado[i] = temp.funciono;
             tiempoCerrado[i] = temp.tiempo;
+            tablerosCerrados[i] = temp.tablero;
         }
     }
     
@@ -45,7 +49,7 @@ public class TablaBasica extends TablaDatos{
     
     @Override
     public String toString(){
-        StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder("Resumen lista:\n");
         for(int idx = 0; idx < Large; idx++){
             sb.append(titulos[idx]);
             sb.append(": ");
@@ -58,8 +62,9 @@ public class TablaBasica extends TablaDatos{
             sb.append(", ");
             sb.append(this.tiempoCerrado[idx]);
             sb.append("ms");
-            sb.append(", ");
-            sb.append("\n");
+            sb.append("\n\n");
+            sb.append("TableroAbierto:\n" + tablerosAbiertos[idx] + "\n");
+            sb.append("TableroCerrado:\n" + tablerosCerrados[idx] + "\n");
         }
         return sb.toString();
     }
