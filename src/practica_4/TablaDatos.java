@@ -7,6 +7,8 @@ public class TablaDatos {
     protected boolean[] cerrado;
     protected long[] tiempoAbierto;
     protected long[] tiempoCerrado;
+    protected String[] tablerosAbiertos;
+    protected String[] tablerosCerrados;
     
     
     
