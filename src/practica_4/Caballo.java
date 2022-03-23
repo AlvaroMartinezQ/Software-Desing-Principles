@@ -136,7 +136,7 @@ public class Caballo implements Recorrido {
 	// Metodos de la interfaz
 
 	@Override
-	public boolean execUsuario() {
+	public void execUsuario() {
             System.out.println("## Ejecutando pruebas personalizadas ##");
 		Scanner in = new Scanner(System.in);
 		// Pide filas
@@ -155,7 +155,6 @@ public class Caballo implements Recorrido {
 		System.out.println("Tipo de camino, 1 abierto, 2 cerrado: ");
 		int tipo = in.nextInt();
 		in.close();
-		return buscaCamino(pos1, pos2, filas, columnas, tipo).funciono;
 	}
 
 	@Override
