@@ -1,6 +1,7 @@
+package practica_4;
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
-
 
 public class TablaGlobal{
     
