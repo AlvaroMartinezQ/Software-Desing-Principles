@@ -154,6 +154,7 @@ public class Caballo implements Recorrido {
 		// Pide columna donde empezara el caballo
 		System.out.println("Tipo de camino, 1 abierto, 2 cerrado: ");
 		int tipo = in.nextInt();
+                buscaCamino(pos1, pos2, filas, columnas, tipo);
 		in.close();
 	}
 
