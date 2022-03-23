@@ -39,10 +39,10 @@ public class Caballo implements Recorrido {
 		}
 
 		long t_fin = System.nanoTime();
-                String sTablero = stringTablero(tablero, exito, (t_fin - t_comienzo)/1000000);
-                System.out.println(sTablero);
-                
-		return new Datos(exito, (t_fin - t_comienzo)/1000000, sTablero);
+		String sTablero = stringTablero(tablero, exito, (t_fin - t_comienzo) / 1000000);
+		System.out.println(sTablero);
+
+		return new Datos(exito, (t_fin - t_comienzo) / 1000000, sTablero);
 	}
 
 	// ----------------------
@@ -110,10 +110,10 @@ public class Caballo implements Recorrido {
 
 	private String stringTablero(int[][] tablero, boolean esSolucion, long tiempo) {
 		StringBuilder sb = new StringBuilder();
-                sb.append("------\n");
-                sb.append("Tablero con dimensiones de " + tablero.length + " filas por " + tablero[0].length + " columnas.\n");
-                sb.append("Ha tardado en ejecutar: " + tiempo + " ms.\n");
-                if (esSolucion) {
+		sb.append("------\n");
+		sb.append("Tablero con dimensiones de " + tablero.length + " filas por " + tablero[0].length + " columnas.\n");
+		sb.append("Ha tardado en ejecutar: " + tiempo + " ms.\n");
+		if (esSolucion) {
 			sb.append("El algoritmo tiene solucion para el caso introducido.\n");
 		} else {
 			sb.append("El algoritmo no tiene solucion para el caso introducido.\n");
@@ -129,7 +129,7 @@ public class Caballo implements Recorrido {
 			sb.append("\n");
 		}
 		sb.append("------\n");
-                return sb.toString();
+		return sb.toString();
 	}
 
 	// ----------------------
@@ -137,7 +137,7 @@ public class Caballo implements Recorrido {
 
 	@Override
 	public void execUsuario() {
-            System.out.println("## Ejecutando pruebas personalizadas ##");
+		System.out.println("## Ejecutando pruebas personalizadas ##");
 		Scanner in = new Scanner(System.in);
 		// Pide filas
 		System.out.println("Filas del problema: ");
@@ -154,7 +154,7 @@ public class Caballo implements Recorrido {
 		// Pide columna donde empezara el caballo
 		System.out.println("Tipo de camino, 1 abierto, 2 cerrado: ");
 		int tipo = in.nextInt();
-                buscaCamino(pos1, pos2, filas, columnas, tipo);
+		buscaCamino(pos1, pos2, filas, columnas, tipo);
 		in.close();
 	}
 
@@ -181,10 +181,10 @@ public class Caballo implements Recorrido {
 		in.close();
 	}
 
-        @Override
-        public void execPruebasGlobales(){
-                System.out.println("## Ejecutando pruebas globales ##");
-                TablaGlobal tg = new TablaGlobal();
-                System.out.println(tg.toString());
-        }
+	@Override
+	public void execPruebasGlobales() {
+		System.out.println("## Ejecutando pruebas globales ##");
+		TablaGlobal tg = new TablaGlobal();
+		System.out.println(tg.toString());
+	}
 }
