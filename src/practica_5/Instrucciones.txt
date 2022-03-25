@@ -1,0 +1,18 @@
+Autores:
+
+-Álvaro Martínez Quiroga
+-Adrian Martin Martin
+-Sebastián Ramiro Entrerrios García
+
+Introducción:
+
+Esta aplicación esta hecha para calcular y generar una factura a partir
+de un importe y unas deducciones. También se podra elegir si es IVA normal
+o reducido, y si las deducciones son bonificadas (x2).
+
+Instrucciones de uso de TrabajoFDS5.jar:
+
+Simplemente es un jar que ejecutas y te abrira una ventana, en ella
+introduces los campos que necesites y le das a Generar FacturaTxT que te 
+mostrara tanto el resultado por la pantalla como te generara el txt con el
+nombre y ruta correspondiente. 
