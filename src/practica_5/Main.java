@@ -1,4 +1,4 @@
-package trabajofds5;
+package practica_5;
 
 public class Main {
     public static void main(String[] args){
