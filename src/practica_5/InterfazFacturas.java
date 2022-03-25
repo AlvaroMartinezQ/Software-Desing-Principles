@@ -1,17 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-package trabajofds5;
+package practica_5;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import javax.swing.JFrame;
 
-/**
- *
- * @author sebss
- */
 public class InterfazFacturas extends javax.swing.JFrame {
 
     FacturaFactorizada ff;
