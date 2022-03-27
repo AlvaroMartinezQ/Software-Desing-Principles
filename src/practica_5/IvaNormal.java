@@ -1,6 +1,6 @@
 package practica_5;
 
-public class IvaNormal implements Iva{
+public class IvaNormal implements Iva {
 
     private final double PORCENTAJE_IVA_NORMAL = 0.16;
 
