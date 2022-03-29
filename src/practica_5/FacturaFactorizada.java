@@ -27,7 +27,7 @@ public class FacturaFactorizada {
 	}
 
 	// Método que calcula el total de la factura
-	public int CalcularTotal() {
+	public double CalcularTotal() {
 		// Calculamos la deducción
 		deduccion.setDeduccion(porcentajeDeduccion);
 		importeDeduccion = deduccion.calcularDeduccion(importeFactura);
