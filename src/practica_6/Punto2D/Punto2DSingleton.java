@@ -3,7 +3,7 @@ package practica_6.Punto2D;
 public class Punto2DSingleton {
 
 	private int x, y;
-	private static Punto2DSingleton punto = null;
+	private static Punto2DSingleton punto;
 
 	private Punto2DSingleton() {
 		this.x = 0;
