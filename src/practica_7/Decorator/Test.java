@@ -6,7 +6,7 @@ public class Test {
 	public static void main(String[] args) {
 
 		String fileDirection = "prueba.txt";
-		String texto1 = "grupo de contraseñas: 12334-123442-111233";
+		String texto1 = "grupo de contrasenyas: 12334-123442-111233";
 		String texto2 = "grupo de ID_local: 123-321-213";
 
 		// Creamos o abrimos el archivo y escribimos:
@@ -35,7 +35,7 @@ public class Test {
 			outCripted.close();
 
 		} catch (IOException iOException) {
-			System.out.println("Excepción de E/S: " + iOException);
+			System.out.println("Excepcion de E/S: " + iOException);
 		}
 
 		// lectura de fichero
@@ -44,7 +44,7 @@ public class Test {
 
 		try {
 
-			// Leemos sin desencriptar:
+			// Leemos sin descifrar:
 			FileReader fr = new FileReader(fileDirection);
 			BufferedReader entrada = new BufferedReader(fr);
 			String s;
@@ -53,7 +53,7 @@ public class Test {
 			}
 			entrada.close();
 
-			// Leemos el texto desencriptandolo:
+			// Leemos el texto descifrado:
 			fr = new FileReader(fileDirection);
 			CriptoReader inCripted = new CriptoReader(fr);
 			char c;
@@ -67,7 +67,7 @@ public class Test {
 		} catch (FileNotFoundException fileNotFoundException) {
 			System.out.println("Archivo no encontrado: " + fileNotFoundException);
 		} catch (IOException iOException) {
-			System.out.println("Excepción de E/S: " + iOException);
+			System.out.println("Excepcion de E/S: " + iOException);
 		}
 
 		// Por ultimo vemos los textos:
@@ -78,9 +78,9 @@ public class Test {
 		System.out.println(texto1);
 		System.out.println(texto2);
 		System.out.println();
-		System.out.println("Textos Sin desencriptar:");
+		System.out.println("Textos Sin descifrar:");
 		System.out.println(texto);
-		System.out.println("Texto desencriptado:");
+		System.out.println("Texto descifrado:");
 		System.out.println(textoEncript);
 	}
 }
