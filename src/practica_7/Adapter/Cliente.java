@@ -51,7 +51,7 @@ public class Cliente {
 		System.out.println();
 		System.out.println();
 
-		System.out.println("Se ordena el ArrayList mediante selección directa usando el adaptador:");
+		System.out.println("Se ordena el ArrayList mediante seleccion directa usando el adaptador:");
 		adSD.ordena(al);
 		imprimirArrayList(al);
 		System.out.println();
@@ -64,7 +64,7 @@ public class Cliente {
 		return v;
 	}
 
-	private static ArrayList inicializarArrayList(int[] v) {
+	private static ArrayList<Integer> inicializarArrayList(int[] v) {
 
 		ArrayList<Integer> al = new ArrayList<Integer>();
 
