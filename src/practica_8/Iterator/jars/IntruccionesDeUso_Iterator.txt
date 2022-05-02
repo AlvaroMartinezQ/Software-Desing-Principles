@@ -1,0 +1,20 @@
++Nombre jar: Practica8_Iterator.jar
+
++Creadores:
+		Sebastián Ramiro Entrerrios García
+		     Álvaro Martínez Quiroga
+		       Adrian Martin Martin
+
++Descripción:
+	Programa escrito en java y ejecutable en jar, es una simple
+        práctica de los patrones de diseño, concretamente los de 
+	comportamiento. El programa se basa en un mini login de usuarios 
+	en el cuál se distinguen tres tipos Administrador, Profesor
+	y Alumno. Cada uno se podra añadir y posteriormente ver a traves
+	de un simple menú y sus funciones.
+
++Intrucciones:
+	Nada más ejecutar se desplegara un menú con tres opciones:
+	Añadir Usuario, Imprimir Almacenes y Salir. El uso de estos
+	es simple e intuitivo.
+	
